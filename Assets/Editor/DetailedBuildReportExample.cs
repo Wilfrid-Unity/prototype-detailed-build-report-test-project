@@ -16,8 +16,10 @@ public class DetailedBuildReportExample : MonoBehaviour
         buildPlayerOptions.locationPathName = "DetailedReportBuild/MyGame.exe";
         buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
 
-        buildPlayerOptions.options = BuildOptions.Development | BuildOptions.DetailedBuildReport;
-        
+        buildPlayerOptions.options = BuildOptions.Development;
+#if UNITY_2020_1_OR_NEWER
+        buildPlayerOptions.options |= BuildOptions.DetailedBuildReport;
+#endif
         BuildPipeline.BuildPlayer(buildPlayerOptions);
     }
 }
